@@ -1,1 +1,1 @@
-A Fairly Succint showcase for a micro blogging platform
+A Fairly Succinct showcase for a micro blogging platform
