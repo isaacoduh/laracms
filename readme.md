@@ -1,0 +1,1 @@
+A Fairly Succint showcase for a micro blogging platform
