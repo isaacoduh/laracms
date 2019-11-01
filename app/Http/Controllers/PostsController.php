@@ -11,6 +11,14 @@ use App\Http\Requests\Post\UpdatePostRequest;
 class PostsController extends Controller
 {
     /**
+     * Constructor Definition
+     */
+    public function __construct()
+    {
+        $this->middleware('verifyCategoriesCount')->only(['create', 'store']);
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
