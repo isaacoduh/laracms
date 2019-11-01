@@ -29,4 +29,22 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    /**
+     * Tags Relationship
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    /**
+     * Check if post has tag
+     * 
+     * @return bool
+     */
+    public function hasTag($tagId)
+    {
+        return in_array($tagId, $this->tags->pluck('id')->toArray());
+    }
 }
