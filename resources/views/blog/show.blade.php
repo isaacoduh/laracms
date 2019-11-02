@@ -44,7 +44,7 @@
                                     <div class="col-9">
                                         <div class="wi-tags">
                                             @foreach ($post->tags as $tag)
-                                                <a href="">{{$tag->name}}</a>
+                                                <a href="{{route('blog.tag',$tag->id)}}">{{$tag->name}}</a>
                                             @endforeach
                                         </div>
                                     </div>
