@@ -16,7 +16,7 @@
                                 <div class="col-12 col-lg-2">
                                     <div class="post-group d-none d-lg-flex flex-column align-items-center">
                                         <a href="" class="text-center">
-                                           <img src="" class="avatar-lg avatar-sm-lg img-fluid rounded-circle mb-2" alt="avatar">
+                                           <img src="{{Gravatar::src($post->user->email)}}" class="avatar-lg avatar-sm-lg img-fluid rounded-circle mb-2" alt="avatar">
                                            <div class="font-small text-center">
                                                 <span class="text-gray">By</span> {{$post->user->name}}
                                             </div> 

@@ -5,7 +5,7 @@
 @endsection
 
 @section('mainblog')
-    @foreach ($posts as $post)
+    @forelse ($posts as $post)
 `   <div class="blog-card">
         <div class="card-header pb-2">
             <div class="post-meta">
@@ -47,7 +47,12 @@
             </p>
         </div>
     </div>
-    @endforeach
+    @empty
+        <p class="text-center">
+            No results found for query <strong>{{request()->query('search')}}</strong>
+        </p>
+    @endforelse
+    {{$posts->appends(['search' => request()->query('search')])->links()}}
 @endsection
 
 @section('aside')
@@ -81,7 +86,8 @@
 
     <div class="card shadow-soft border-soft p-3 mt-4">
         <h5 class="mb-4">Search</h5>
-
-        <input type="text" placeholder="" class="form-control">
+        <form action="" action="{{route('welcome')}}" method="GET">
+            <input type="text" placeholder="" name="search" class="form-control" value="{{request()->query('search')}}">
+        </form>
     </div>
 @endsection
