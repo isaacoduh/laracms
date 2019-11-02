@@ -85,6 +85,38 @@ class PostsController extends Controller
     }
 
     /**
+     * Display the specified resource
+     */
+    public function category(Category $category)
+    {
+        $search = request()->query('search');
+
+        if($search){
+            $posts = $category->posts()->where('title', 'LIKE', "%{$search}")->simplePaginate(3);
+        }else{
+            $posts = $category->posts()->simplePaginate(3);
+        }
+
+        return view('blog.category')
+            ->with('category', $category)
+            ->with('posts', $posts)
+            ->with('categories', Category::all())
+            ->with('tags', Tag::all());
+    }
+
+    /**
+     * Display the specified resource
+     */
+    public function tag(Tag $tag)
+    {
+        return view('blog.tag')
+            ->with('tag', $tag)
+            ->with('categories', Category::all())
+            ->with('tags', Tag::all())
+            ->with('posts', $tag->posts()->simplePaginate(3));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Post  $post

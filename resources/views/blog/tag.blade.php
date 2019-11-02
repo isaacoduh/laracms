@@ -1,10 +1,13 @@
 @extends('layouts.blog')
 
 @section('title')
-    Story House Blog
+    Tag {{$tag->name}}
 @endsection
 
 @section('mainblog')
+    <h1 class="mt-5">
+        {{$tag->name}}
+    </h1>
     @forelse ($posts as $post)
 `   <div class="blog-card">
         <div class="card-header pb-2">
@@ -54,6 +57,7 @@
     @endforelse
     {{$posts->appends(['search' => request()->query('search')])->links()}}
 @endsection
+
 
 @section('aside')
     <ul class="card list-group list-group-flush shadow-soft border-soft p-3">
